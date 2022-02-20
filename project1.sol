@@ -1,8 +1,7 @@
 pragma solidity ^0.4.17;
 contract Auction {
     
-    // Data
-    //Structure to hold details of the item
+   
     struct Item {
         uint itemId; // id of the item
         uint[] itemTokens;  //tokens bid in favor of the item
@@ -50,12 +49,9 @@ contract Auction {
         
         bidders[bidderCount].personId = bidderCount;
         
-        //Part 1 Task 3. Initialize the address of the bidder 
-        /*Hint. Here the bidders[bidderCount].addr should be initialized with address of the registrant.*/
+       
 
-        // ** Start code here. 1 line approximately. **/
-            bidders[bidderCount].addr = msg.sender;
-        //** End code here. **
+      
         
         bidders[bidderCount].remainingTokens = 5; // only 5 tokens
         tokenDetails[msg.sender]=bidders[bidderCount];
@@ -71,12 +67,12 @@ contract Auction {
         */
         
         /*
-        Part 1 Task 4. Implement the three conditions below.
-            4.1 If the number of tokens remaining with the bidder is < count of tokens bidded, revert.
-            4.2 If there are no tokens remaining with the bidder, revert.
-            4.3 If the id of the item for which bid is placed, is greater than 2, revert.
+       
+             If the number of tokens remaining with the bidder is < count of tokens bidded, revert.
+             If there are no tokens remaining with the bidder, revert.
+             If the id of the item for which bid is placed, is greater than 2, revert.
 
-        Hint: "tokenDetails[msg.sender].remainingTokens" gives the details of the number of tokens remaining with the bidder.
+         "tokenDetails[msg.sender].remainingTokens" gives the details of the number of tokens remaining with the bidder.
         */
         
         // ** Start code here. 2 lines approximately. **/
@@ -107,10 +103,7 @@ contract Auction {
         }
     }
     
-    // Part 2 Task 1. Create a modifier named "onlyOwner" to ensure that only owner is allowed to reveal winners
-    //Hint : Use require to validate if "msg.sender" is equal to the "beneficiary".
-    modifier onlyOwner {
-        // ** Start code here. 2 lines approximately. **
+    
          require(msg.sender == beneficiary);
         _;
         //** End code here. **
@@ -132,9 +125,7 @@ contract Auction {
 
             uint winnerId = currentItem.itemTokens[randomIndex];
                 
-            /* Part 1 Task 6. Assign the winners.
-            Hint." bidders[winnerId] " will give you the person object with the winnerId.
-            you need to assign the address of the person obtained above to winners[id] */
+           
 
             // ** Start coding here *** 1 line approximately.
             
